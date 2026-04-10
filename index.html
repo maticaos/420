@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>4:20 — Dulces Aliens × Conectados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+:root{
+  --g:#8CC63E;
+  --g-dim:rgba(140,198,62,0.12);
+  --p:#9b6ef5;
+  --p-dim:rgba(107,66,193,0.12);
+  --cream:#E9DBA6;
+  --cream-dim:rgba(233,219,166,0.5);
+  --bg:#0d0d14;
+  --surface:#141420;
+  --border:rgba(255,255,255,0.06);
+}
+
+body{
+  font-family:'Manrope',sans-serif;
+  background:var(--bg);
+  color:var(--cream);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── TIPOGRAFÍA ──────────────────────── */
+.space { font-family:'Space Grotesk',sans-serif; }
+
+/* ── HERO ─────────────────────────────── */
+.hero{
+  position:relative;
+  height:100svh;min-height:600px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+}
+.hero__bg{position:absolute;inset:0;}
+.hero__bg img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  filter:brightness(0.45) saturate(1.4);
+}
+.hero__bg::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom,rgba(13,13,20,0.0) 0%,rgba(13,13,20,0.0) 30%,rgba(13,13,20,0.6) 65%,rgba(13,13,20,1) 100%),
+    radial-gradient(ellipse at 80% 20%,rgba(107,66,193,0.2) 0%,transparent 55%),
+    radial-gradient(ellipse at 10% 90%,rgba(140,198,62,0.12) 0%,transparent 45%);
+}
+
+.hero__alien{
+  position:absolute;
+  bottom:0;right:0;
+  width:clamp(150px,40vw,220px);
+  z-index:2;
+  -webkit-mask-image:linear-gradient(to top,transparent 0%,black 18%);
+  mask-image:linear-gradient(to top,transparent 0%,black 18%);
+}
+.hero__alien img{
+  width:100%;display:block;
+  filter:drop-shadow(0 0 18px rgba(140,198,62,0.35));
+}
+
+.hero__body{
+  position:relative;z-index:3;
+  padding:0 24px 44px;
+  max-width:480px;
+  padding-right:calc(clamp(150px,40vw,220px) + 8px);
+}
+
+.hero__pill{
+  display:inline-flex;align-items:center;gap:7px;
+  border:1px solid rgba(140,198,62,0.28);
+  background:rgba(13,13,20,0.55);
+  backdrop-filter:blur(12px);
+  color:var(--g);
+  border-radius:50px;padding:6px 14px;
+  font-size:0.65rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.12em;
+  margin-bottom:16px;
+}
+.hero__label{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.72rem;font-weight:500;
+  text-transform:uppercase;letter-spacing:0.3em;
+  color:rgba(233,219,166,0.38);
+  margin-bottom:2px;
+}
+.hero__num{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:clamp(5rem,22vw,8rem);
+  line-height:0.88;
+  color:var(--g);
+  text-shadow:0 0 24px rgba(140,198,62,0.9),0 0 60px rgba(140,198,62,0.4),0 0 120px rgba(140,198,62,0.15);
+  letter-spacing:-0.03em;
+  margin-bottom:10px;
+}
+.hero__title{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:clamp(1.1rem,5vw,1.5rem);
+  text-transform:uppercase;
+  color:var(--p);
+  text-shadow:0 0 18px rgba(107,66,193,0.7);
+  line-height:1.15;
+  margin-bottom:10px;
+  letter-spacing:0.02em;
+}
+.hero__sub{
+  font-size:0.82rem;font-weight:500;
+  color:rgba(233,219,166,0.45);
+  letter-spacing:0.05em;
+  margin-bottom:0;
+}
+
+/* ── LAYOUT ───────────────────────────── */
+.wrap{max-width:480px;margin:0 auto;padding:0 20px;}
+section{padding:48px 0;}
+hr.div{
+  border:none;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(140,198,62,0.12),rgba(107,66,193,0.18),rgba(140,198,62,0.12),transparent);
+}
+
+/* ── LABEL ────────────────────────────── */
+.label{
+  display:block;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.58rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.3em;
+  color:rgba(155,110,245,0.5);
+  margin-bottom:18px;
+  text-align:center;
+}
+
+/* ── CARDS ────────────────────────────── */
+.card{
+  background:var(--surface);
+  border-radius:16px;
+  border:1px solid var(--border);
+  padding:22px;
+}
+.card-g{border-color:rgba(140,198,62,0.12);}
+.card-p{border-color:rgba(107,66,193,0.15);}
+
+/* ── INFO GRID ────────────────────────── */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.info-cell{
+  background:var(--surface);
+  border-radius:14px;padding:20px 12px;
+  text-align:center;border:1px solid var(--border);
+}
+.info-num{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;font-size:1.8rem;line-height:1;margin-bottom:4px;
+}
+.info-tiny{
+  font-size:0.58rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.15em;
+  color:rgba(233,219,166,0.25);
+}
+
+/* ── IMÁGENES ─────────────────────────── */
+.img-full{
+  width:100%;border-radius:16px;overflow:hidden;
+  display:block;line-height:0;position:relative;
+}
+.img-full img{width:100%;display:block;object-fit:cover;}
+.img-full::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 50%,rgba(13,13,20,0.8)100%);
+  pointer-events:none;
+}
+
+.img-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.img-pair__item{border-radius:14px;overflow:hidden;line-height:0;}
+.img-pair__item img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* ── PRICE ────────────────────────────── */
+.price-block{
+  background:var(--surface);
+  border-radius:16px;border:1px solid rgba(140,198,62,0.15);
+  padding:28px 22px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.price-block::before{
+  content:'';position:absolute;
+  bottom:-40px;left:50%;transform:translateX(-50%);
+  width:200px;height:100px;
+  background:radial-gradient(ellipse,rgba(140,198,62,0.1)0%,transparent 70%);
+  pointer-events:none;
+}
+.price-num{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:clamp(3rem,16vw,4.5rem);
+  line-height:1;
+  color:var(--g);
+  text-shadow:0 0 24px rgba(140,198,62,0.6);
+}
+.price-sub{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.62rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.2em;
+  color:rgba(233,219,166,0.25);
+  margin-top:3px;
+}
+
+/* ── LISTA ────────────────────────────── */
+.list{list-style:none;display:flex;flex-direction:column;gap:13px;}
+.list li{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:0.9rem;color:rgba(233,219,166,0.78);
+  line-height:1.5;
+}
+.list li .ico{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+
+/* ── TAGS ─────────────────────────────── */
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
+.tag{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.68rem;font-weight:600;
+  padding:4px 11px;border-radius:50px;letter-spacing:0.03em;
+}
+.tag-g{border:1px solid rgba(140,198,62,0.22);background:rgba(140,198,62,0.07);color:var(--g);}
+.tag-p{border:1px solid rgba(107,66,193,0.22);background:rgba(107,66,193,0.07);color:var(--p);}
+
+/* ── BOTONES ──────────────────────────── */
+.btn{
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;font-size:0.9rem;
+  text-transform:uppercase;letter-spacing:0.07em;
+  text-decoration:none;
+  color:#0d0d14;
+  background:linear-gradient(135deg,#b4f050 0%,#6aaa12 100%);
+  border-radius:12px;padding:17px 24px;width:100%;
+  transition:transform .15s,box-shadow .15s;
+  box-shadow:0 4px 22px rgba(140,198,62,0.28),inset 0 1px 0 rgba(255,255,255,0.18);
+  position:relative;overflow:hidden;
+}
+.btn::after{
+  content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);
+  transition:left .5s;
+}
+.btn:hover::after{left:150%}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(140,198,62,0.4)}
+.btn:active{transform:scale(.98)}
+
+.btn-ghost{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.75rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.1em;
+  text-decoration:none;color:var(--g);
+  border:1px solid rgba(140,198,62,0.28);
+  border-radius:50px;padding:12px 20px;width:100%;
+  background:rgba(140,198,62,0.04);
+  transition:all .2s;
+}
+.btn-ghost:hover{background:rgba(140,198,62,0.1);border-color:rgba(140,198,62,0.5)}
+
+/* ── CUPOS ────────────────────────────── */
+.cupos{
+  display:block;text-align:center;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:0.58rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.25em;
+  color:rgba(140,198,62,0.4);
+  animation:twk 2.8s ease-in-out infinite;
+}
+@keyframes twk{0%,100%{opacity:.3}55%{opacity:1}}
+
+/* ── FAB ──────────────────────────────── */
+.fab{
+  position:fixed;bottom:18px;right:14px;z-index:500;
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;font-size:0.75rem;
+  text-transform:uppercase;letter-spacing:0.08em;
+  text-decoration:none;color:#0d0d14;
+  background:linear-gradient(135deg,#b4f050,#6aaa12);
+  padding:12px 16px;border-radius:50px;
+  display:flex;align-items:center;gap:5px;
+  animation:fab 2.5s ease-in-out infinite;
+}
+@keyframes fab{
+  0%,100%{box-shadow:0 4px 14px rgba(0,0,0,0.5),0 0 0 0 rgba(140,198,62,0.4)}
+  50%{box-shadow:0 4px 14px rgba(0,0,0,0.5),0 0 0 10px rgba(140,198,62,0)}
+}
+
+/* ── CIERRE ───────────────────────────── */
+.cierre-text{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size:clamp(1.6rem,7.5vw,2rem);
+  text-transform:uppercase;
+  color:var(--g);
+  text-shadow:0 0 16px rgba(140,198,62,0.6);
+  letter-spacing:0.02em;
+  line-height:1.1;
+}
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/5491124054763" target="_blank" rel="noopener" class="fab">👽 Reservar</a>
+
+<!-- ══════════════════
+     HERO
+══════════════════════ -->
+<section class="hero">
+  <div class="hero__bg">
+    <img src="images/galaxy.jpeg" alt=""/>
+  </div>
+  <div class="hero__alien">
+    <img src="images/alien.jpeg" alt="Alien"/>
+  </div>
+  <div class="hero__body wrap">
+    <div class="hero__pill">Dulces Aliens 👽 × Conectados 🌀</div>
+    <p class="hero__label">Se viene el</p>
+    <div class="hero__num">4:20</div>
+    <p class="hero__title">Y vamos a hacerle<br/>un homenaje</p>
+    <p class="hero__sub">if you know what we mean 🍃</p>
+  </div>
+</section>
+
+<!-- ══════════════════
+     FECHA + LUGAR
+══════════════════════ -->
+<hr class="div"/>
+<section>
+<div class="wrap">
+  <span class="label">El evento</span>
+
+  <div class="info-grid">
+    <div class="info-cell">
+      <div class="info-num" style="color:var(--g);">20/04</div>
+      <div class="info-tiny">Lunes</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-num" style="color:var(--p);">20 hs</div>
+      <div class="info-tiny">Nocturno</div>
+    </div>
+  </div>
+
+  <div class="card" style="text-align:center;margin-bottom:14px;">
+    <p style="font-size:0.58rem;font-weight:600;font-family:'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:0.2em;color:rgba(233,219,166,0.25);margin-bottom:8px;">Lugar</p>
+    <p style="font-size:1rem;font-weight:500;color:rgba(233,219,166,0.55);line-height:1.6;">
+      Te lo pasamos cuando<br/>confirmes tu asistencia
+    </p>
+  </div>
+
+  <a href="https://wa.me/5491124054763" target="_blank" rel="noopener" class="btn-ghost" style="margin-bottom:12px;">
+    Confirmar asistencia → WhatsApp
+  </a>
+  <span class="cupos">✦ cupos limitados ✦</span>
+</div>
+</section>
+
+<!-- ══════════════════
+     EXPERIENCIA
+══════════════════════ -->
+<hr class="div"/>
+<section>
+<div class="wrap">
+  <span class="label">La experiencia</span>
+
+  <h2 class="space" style="font-weight:700;font-size:clamp(2rem,10vw,2.8rem);text-transform:uppercase;line-height:1.05;text-align:center;margin-bottom:22px;letter-spacing:-0.01em;">
+    Vamos a pintar<br/>
+    <span style="color:var(--g);text-shadow:0 0 14px rgba(140,198,62,0.5);">totes bags</span>
+  </h2>
+
+  <!-- Tote bag protagonista -->
+  <div class="img-full" style="aspect-ratio:1/1;margin-bottom:10px;">
+    <img src="images/tote bag.jpeg" alt="Tote bag"/>
+  </div>
+
+  <div class="card card-p">
+    <p style="font-size:0.9rem;line-height:1.8;color:rgba(233,219,166,0.7);">
+      Una experiencia sensorial en un multiverso creativo — aliens, gatos, velas, plantas y pintura.
+    </p>
+    <div class="tags">
+      <span class="tag tag-g">👽 aliens</span>
+      <span class="tag tag-g">🐱 gatos</span>
+      <span class="tag tag-p">🕯️ velas</span>
+      <span class="tag tag-g">🌿 plantas</span>
+      <span class="tag tag-p">🎨 pintura</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════
+     REQUISITOS
+══════════════════════ -->
+<hr class="div"/>
+<section>
+<div class="wrap">
+  <span class="label">Para asistir</span>
+
+  <!-- Gato brujo: energía mística -->
+  <div class="img-full" style="aspect-ratio:1/1;margin-bottom:14px;">
+    <img src="images/gato blanco.jpeg" alt="Gato brujo"/>
+  </div>
+
+  <div class="card card-g" style="text-align:center;">
+    <p style="font-size:1rem;font-weight:600;line-height:1.7;color:rgba(233,219,166,0.85);">
+      Venir con <strong style="color:var(--g);">buena onda</strong><br/>
+      y ganas de festejar el 4:20 💚
+    </p>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════
+     VALOR
+══════════════════════ -->
+<hr class="div"/>
+<section>
+<div class="wrap">
+  <span class="label">La inversión</span>
+
+  <!-- Precio primero, con contexto -->
+  <div class="price-block" style="margin-bottom:14px;">
+    <p style="font-family:'Space Grotesk',sans-serif;font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.22em;color:rgba(233,219,166,0.25);margin-bottom:10px;">
+      La inversión de felicidad es de
+    </p>
+    <div class="price-num">$40.000</div>
+    <p class="price-sub">pesos argentinos</p>
+  </div>
+
+  <!-- Gato astronauta antes del incluye -->
+  <div class="img-pair" style="margin-bottom:14px;">
+    <div class="img-pair__item" style="aspect-ratio:1;">
+      <img src="images/gato gris.jpeg" alt="Gato astronauta"/>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="card card-p" style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+        <p style="font-family:'Space Grotesk',sans-serif;font-size:0.88rem;font-weight:600;color:rgba(233,219,166,0.6);line-height:1.5;">
+          Todo para que la noche sea perfecta
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-p">
+    <p style="font-family:'Space Grotesk',sans-serif;font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:var(--p);margin-bottom:16px;">Incluye:</p>
+    <ul class="list">
+      <li><span class="ico">🎨</span>Materiales</li>
+      <li><span class="ico">🛸</span>Tequeños de otro planeta</li>
+      <li><span class="ico">🧉</span>Bebidas</li>
+      <li><span class="ico">🎁</span><span>Premio sorpresa — rifaremos algo que va potente para quien se lo gane</span></li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════
+     CIERRE
+══════════════════════ -->
+<hr class="div"/>
+<section>
+<div class="wrap" style="text-align:center;">
+  <p style="font-size:0.9rem;line-height:1.8;color:rgba(233,219,166,0.55);max-width:310px;margin:0 auto 20px;">
+    ¿Estás listx para sacar tu lado creativo, homenajear el 4:20, llevarte una tote bag fabulosa y si la suerte está contigo un premio?
+  </p>
+  <p class="cierre-text">nosotras<br/>siiiiiii 🐱</p>
+</div>
+</section>
+
+<!-- ══════════════════
+     CTA FINAL
+══════════════════════ -->
+<div style="padding:12px 20px 96px;max-width:480px;margin:0 auto;text-align:center;">
+  <p style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;font-weight:500;color:rgba(233,219,166,0.3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">
+    Si estás listx reservá tu lugar ahora
+  </p>
+  <a href="https://wa.me/5491124054763" target="_blank" rel="noopener" class="btn" style="margin-bottom:12px;">
+    Sí, sí capitán — estamos listos
+  </a>
+  <span class="cupos">✦ cupos limitados ✦</span>
+</div>
+
+</body>
+</html>
