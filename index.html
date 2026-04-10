@@ -73,7 +73,7 @@ body{
   position:relative;z-index:3;
   padding:0 24px 44px;
   max-width:480px;
-  padding-right:calc(clamp(150px,40vw,220px) + 8px);
+  padding-right:24px;
 }
 
 .hero__pill{
@@ -321,9 +321,6 @@ hr.div{
   <div class="hero__bg">
     <img src="images/galaxy.jpeg" alt=""/>
   </div>
-  <div class="hero__alien">
-    <img src="images/alien.jpeg" alt="Alien"/>
-  </div>
   <div class="hero__body wrap">
     <div class="hero__pill">Dulces Aliens 👽 × Conectados 🌀</div>
     <p class="hero__label">Se viene el</p>
@@ -341,26 +338,27 @@ hr.div{
 <div class="wrap">
   <span class="label">El evento</span>
 
-  <div class="info-grid">
-    <div class="info-cell">
-      <div class="info-num" style="color:var(--g);">20/04</div>
-      <div class="info-tiny">Lunes</div>
+  <!-- Fecha grande -->
+  <div style="text-align:center;margin-bottom:24px;">
+    <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(4.5rem,22vw,7rem);line-height:0.88;color:var(--g);text-shadow:0 0 28px rgba(140,198,62,0.7),0 0 60px rgba(140,198,62,0.3);letter-spacing:-0.03em;">20/04</div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.3em;color:rgba(233,219,166,0.28);margin-top:8px;">Lunes · Día de homenaje</div>
+  </div>
+
+  <!-- Horario + lugar — dos celdas -->
+  <div class="info-grid" style="margin-bottom:14px;">
+    <div class="info-cell" style="background:linear-gradient(135deg,rgba(107,66,193,0.12),rgba(107,66,193,0.04));border-color:rgba(107,66,193,0.18);">
+      <div style="font-size:1.3rem;margin-bottom:4px;">🕖</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.3rem;color:var(--p);line-height:1;">19 a 22 hs</div>
+      <div class="info-tiny" style="margin-top:4px;">Nocturno</div>
     </div>
-    <div class="info-cell">
-      <div class="info-num" style="color:var(--p);font-size:1.3rem;">19 a 22 hs</div>
-      <div class="info-tiny">Nocturno</div>
+    <div class="info-cell" style="background:linear-gradient(135deg,rgba(140,198,62,0.08),rgba(140,198,62,0.02));border-color:rgba(140,198,62,0.14);">
+      <div style="font-size:1.3rem;margin-bottom:4px;">📍</div>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:0.82rem;color:rgba(233,219,166,0.55);line-height:1.4;">Al confirmar<br/>te lo pasamos</div>
     </div>
   </div>
 
-  <div class="card" style="text-align:center;margin-bottom:14px;">
-    <p style="font-size:0.58rem;font-weight:600;font-family:'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:0.2em;color:rgba(233,219,166,0.25);margin-bottom:8px;">Lugar</p>
-    <p style="font-size:1rem;font-weight:500;color:rgba(233,219,166,0.55);line-height:1.6;">
-      Te lo pasamos cuando<br/>confirmes tu asistencia
-    </p>
-  </div>
-
-  <a href="https://wa.me/5491124054763" target="_blank" rel="noopener" class="btn-ghost" style="margin-bottom:12px;">
-    Confirmar asistencia → WhatsApp
+  <a href="https://wa.me/5491124054763" target="_blank" rel="noopener" class="btn" style="margin-bottom:10px;">
+    Quiero ir — reservar lugar
   </a>
   <span class="cupos">✦ cupos limitados ✦</span>
 </div>
