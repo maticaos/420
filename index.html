@@ -297,6 +297,16 @@ hr.div{
   50%{box-shadow:0 4px 14px rgba(0,0,0,0.5),0 0 0 10px rgba(140,198,62,0)}
 }
 
+/* ── SENSORIAL CARD ───────────────────── */
+.sensorial-card{
+  border-color:rgba(107,66,193,0.25);
+  animation:sensorial-glow 3.5s ease-in-out infinite;
+}
+@keyframes sensorial-glow{
+  0%,100%{box-shadow:0 0 0 0 transparent,0 0 18px rgba(107,66,193,0.08)}
+  50%{box-shadow:0 0 0 3px rgba(140,198,62,0.08),0 0 28px rgba(107,66,193,0.2)}
+}
+
 /* ── CIERRE ───────────────────────────── */
 .cierre-text{
   font-family:'Space Grotesk',sans-serif;
@@ -341,7 +351,7 @@ hr.div{
   <!-- Fecha grande -->
   <div style="text-align:center;margin-bottom:24px;">
     <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(4.5rem,22vw,7rem);line-height:0.88;color:var(--g);text-shadow:0 0 28px rgba(140,198,62,0.7),0 0 60px rgba(140,198,62,0.3);letter-spacing:-0.03em;">20/04</div>
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.3em;color:rgba(233,219,166,0.28);margin-top:8px;">Lunes · Día de homenaje</div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:0.62rem;font-weight:600;text-transform:uppercase;letter-spacing:0.3em;color:rgba(233,219,166,0.55);margin-top:12px;">Lunes · Día de homenaje</div>
   </div>
 
   <!-- Horario + lugar — dos celdas -->
@@ -382,7 +392,7 @@ hr.div{
     <img src="images/tote bag.jpeg" alt="Tote bag"/>
   </div>
 
-  <div class="card card-p">
+  <div class="card card-p" style="margin-bottom:10px;">
     <p style="font-size:1rem;font-weight:600;line-height:1.7;color:rgba(233,219,166,0.88);">
       Tu tote bag. Tu universo.<br/>
       <span style="color:var(--p);">Pintala como se te cante.</span>
@@ -397,6 +407,43 @@ hr.div{
       <span class="tag tag-g">🌿 plantas</span>
       <span class="tag tag-p">🎨 pintura libre</span>
     </div>
+  </div>
+
+  <!-- Card cata -->
+  <div class="card card-g" style="display:flex;gap:16px;align-items:center;margin-bottom:10px;">
+    <div style="font-size:2.4rem;flex-shrink:0;">👽</div>
+    <div>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:700;color:rgba(233,219,166,0.9);line-height:1.4;margin-bottom:6px;">
+        Cata de <span style="color:var(--g);">3 variedades</span> de dulces aliens
+      </p>
+      <p style="font-size:0.78rem;line-height:1.6;color:rgba(233,219,166,0.4);">
+        Cada variedad tiene su momento en la noche — te la presentamos, te contamos qué es y la catamos cuando el ambiente pide exactamente eso.
+      </p>
+    </div>
+  </div>
+
+  <!-- Cierre sensorial -->
+  <div class="card sensorial-card" style="text-align:center;background:linear-gradient(135deg,rgba(107,66,193,0.1),rgba(140,198,62,0.06));">
+    <p style="font-family:'Space Grotesk',sans-serif;font-size:0.9rem;font-weight:700;color:rgba(233,219,166,0.85);line-height:1.5;margin-bottom:16px;">
+      Todo está pensado como una<br/><span style="color:var(--p);">experiencia sensorial completa</span>
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;">
+      <div style="background:rgba(107,66,193,0.08);border:1px solid rgba(107,66,193,0.15);border-radius:12px;padding:14px 8px;">
+        <div style="font-size:1.8rem;margin-bottom:6px;">🎨</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--p);">Crear</div>
+      </div>
+      <div style="background:rgba(140,198,62,0.07);border:1px solid rgba(140,198,62,0.15);border-radius:12px;padding:14px 8px;">
+        <div style="font-size:1.8rem;margin-bottom:6px;">👽</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--g);">Catar</div>
+      </div>
+      <div style="background:rgba(107,66,193,0.08);border:1px solid rgba(107,66,193,0.15);border-radius:12px;padding:14px 8px;">
+        <div style="font-size:1.8rem;margin-bottom:6px;">🛸</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--p);">Comer</div>
+      </div>
+    </div>
+    <p style="font-size:0.75rem;line-height:1.7;color:rgba(233,219,166,0.35);">
+      Cada parte de la noche tiene su por qué y su momento.
+    </p>
   </div>
 </div>
 </section>
@@ -460,8 +507,9 @@ hr.div{
     <p style="font-family:'Space Grotesk',sans-serif;font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:var(--p);margin-bottom:16px;">Incluye:</p>
     <ul class="list">
       <li><span class="ico">🎨</span><span>Todos los materiales — pinturas, pinceles, la tote bag y lo que haga falta</span></li>
+      <li><span class="ico">👽</span><span>Cata de 3 variedades de dulces aliens — cada una de otro universo</span></li>
       <li><span class="ico">🛸</span><span>Tequeños de otro planeta — porque el hambre no es de este mundo</span></li>
-      <li><span class="ico">🧉</span><span>Bebidas para mantener la vibra encendida toda la noche</span></li>
+      <li><span class="ico">🥤</span><span>Bebidas sin alcohol para mantener la vibra encendida toda la noche</span></li>
       <li><span class="ico">🎁</span><span>Premio sorpresa — algo muy especial para quien tenga la suerte de su lado</span></li>
     </ul>
   </div>
@@ -475,7 +523,7 @@ hr.div{
 <section>
 <div class="wrap" style="text-align:center;">
   <p style="font-size:0.9rem;line-height:1.9;color:rgba(233,219,166,0.5);max-width:310px;margin:0 auto 20px;">
-    Una noche para crear, reír, comer rico y llevarte algo hecho con tus manos — en el día más verde del año.
+    Una noche para crear, reír, catar aliens y llevarte algo hecho con tus manos — en el día más verde del año.
   </p>
   <p class="cierre-text">¿venís o<br/>venís? 👽</p>
 </div>
